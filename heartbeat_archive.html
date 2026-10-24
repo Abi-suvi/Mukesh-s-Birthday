@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heartbeat 
+  | Dr. B. Mukesh</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cyan:#00e5ff;
+  --blue:#168dff;
+  --gold:#ffd36a;
+  --purple:#e38aff;
+  --green:#52ffe0;
+}
+body{
+  min-height:100vh;
+  color:#d9f4ff;
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+  background:
+    radial-gradient(ellipse at 50% 30%,rgba(0,105,190,.28),transparent 55%),
+    radial-gradient(ellipse at 10% 80%,rgba(0,65,130,.28),transparent 45%),
+    linear-gradient(145deg,#020b1c,#031b38 48%,#010817);
+  background-attachment:fixed;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.35;
+  z-index:-1;
+  background-image:
+    radial-gradient(circle,#00cfff 1px,transparent 2px),
+    radial-gradient(circle,#258cff 1px,transparent 2px);
+  background-size:83px 97px,137px 151px;
+  animation:stars 8s linear infinite alternate;
+}
+@keyframes stars{from{transform:translateY(0)}to{transform:translateY(-18px)}}
+.medical-decoration{
+  position:fixed;
+  pointer-events:none;
+  z-index:-1;
+  color:#078fff;
+  opacity:.17;
+  font-size:clamp(40px,8vw,100px);
+}
+.medical-decoration.left{left:-12px;top:35%}
+.medical-decoration.right{right:-12px;bottom:15%}
+header{
+  position:relative;
+  text-align:center;
+  padding:38px 18px 15px;
+}
+.eyebrow{
+  font:600 12px 'Orbitron',sans-serif;
+  letter-spacing:4px;
+  color:var(--cyan);
+}
+h1{
+  margin:14px 0 0;
+  font:clamp(40px,7vw,82px) 'Great Vibes',cursive;
+  color:#dffaff;
+  text-shadow:0 0 9px #00cfff,0 0 28px #008cff;
+}
+.doctor-name{
+  font:600 clamp(17px,3vw,27px) 'Orbitron',sans-serif;
+  letter-spacing:6px;
+  margin-top:5px;
+  text-shadow:0 0 12px #138fff;
+}
+.subtitle{margin-top:12px;color:#a8dfff;font-size:15px}
+.monitor{
+  width:min(470px,90%);
+  margin:23px auto 0;
+  border:1px solid var(--cyan);
+  border-radius:40px;
+  padding:11px;
+  color:var(--cyan);
+  font:600 13px 'Orbitron',sans-serif;
+  letter-spacing:2px;
+  box-shadow:0 0 18px #007fff40,inset 0 0 12px #007fff25;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{50%{box-shadow:0 0 28px #00dfff75,inset 0 0 18px #007fff45}}
+.instruction{margin:13px 0;color:#a8dfff;font-size:13px;font-style:italic}
+.side-note{
+  position:absolute;
+  top:42px;
+  width:150px;
+  color:#84caff;
+  font:20px 'Great Vibes',cursive;
+  line-height:1.5;
+  transform:rotate(-8deg);
+}
+.side-note.left{left:3%;text-align:left}
+.side-note.right{right:3%;text-align:right;transform:rotate(8deg)}
+.stethoscope{
+  position:absolute;
+  right:18%;
+  top:25px;
+  font-size:60px;
+  filter:drop-shadow(0 0 10px #00bfff);
+}
+@media(max-width:760px){
+  .side-note,.stethoscope{display:none}
+}
+.ecg{
+  width:min(850px,90%);
+  height:55px;
+  margin:0 auto 22px;
+  overflow:hidden;
+}
+.ecg svg{width:100%;height:100%}
+.ecg polyline{
+  fill:none;stroke:var(--cyan);stroke-width:2.4;
+  filter:drop-shadow(0 0 5px var(--cyan));
+  stroke-dasharray:1200;stroke-dashoffset:1200;
+  animation:heartbeat 4s linear infinite;
+}
+@keyframes heartbeat{to{stroke-dashoffset:0}}
+.scans{
+  width:min(1100px,94%);
+  margin:15px auto 30px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+}
+.scan{
+  --glow:var(--cyan);
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(110px,42%) 1fr;
+  gap:22px;
+  padding:14px;
+  border:1px solid var(--glow);
+  border-radius:20px;
+  background:linear-gradient(125deg,rgba(3,31,62,.94),rgba(2,16,37,.95));
+  box-shadow:0 0 7px var(--glow),inset 0 0 16px #006dff18;
+  transition:transform .3s,box-shadow .3s;
+  animation:borderGlow 3s ease-in-out infinite alternate;
+}
+.scan:nth-child(1){--glow:var(--gold)}
+.scan:nth-child(2){--glow:#00baff}
+.scan:nth-child(3){--glow:var(--purple)}
+.scan:nth-child(4){--glow:var(--green)}
+@keyframes borderGlow{
+  from{box-shadow:0 0 5px var(--glow),inset 0 0 10px #007fff15}
+  to{box-shadow:0 0 17px var(--glow),inset 0 0 18px #007fff28}
+}
+.scan:hover{transform:translateY(-5px)}
+.scan img{
+  width:100%;height:100%;min-height:225px;
+  max-height:280px;object-fit:cover;
+  border:2px solid var(--glow);
+  border-radius:12px;
+  box-shadow:0 0 10px var(--glow);
+}
+.scan-content{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.scan-number{
+  align-self:flex-start;
+  padding:5px 12px;
+  border:1px solid var(--glow);
+  border-radius:30px;
+  color:var(--glow);
+  font:600 11px 'Orbitron',sans-serif;
+  letter-spacing:1px;
+}
+.scan h2{
+  margin:17px 0 9px;
+  font:29px 'Great Vibes',cursive;
+  color:#e3f6ff;
+}
+.scan p{font-size:13px;color:#b8dcf6;line-height:1.8}
+.finding{
+  margin-top:17px;padding:10px;
+  border:1px solid #087db0;
+  border-radius:12px;
+  color:var(--cyan);
+  font-size:12px;
+}
+.finding small{
+  display:block;font:10px 'Orbitron',sans-serif;
+  letter-spacing:2px;margin-bottom:3px;
+}
+.scan-icon{color:var(--glow);font-size:22px;float:right}
+footer{
+  position:relative;
+  text-align:center;
+  padding:20px 18px 40px;
+  background:linear-gradient(180deg,transparent,rgba(0,89,180,.15));
+}
+footer h2{
+  font:clamp(32px,5vw,48px) 'Great Vibes',cursive;
+  color:#e3faff;
+  text-shadow:0 0 12px #00aaff;
+  margin:5px 0 12px;
+}
+footer p{font-size:13px;line-height:1.9;color:#c3e8ff}
+.signature{margin-top:14px;font-style:italic;color:#82e8ff}
+.credit{
+  margin-top:22px;
+  font:10px 'Orbitron',sans-serif;
+  letter-spacing:2px;color:#39bfff;
+}
+@media(max-width:700px){
+  header{padding-top:30px}
+  .eyebrow{letter-spacing:2px;font-size:10px}
+  .doctor-name{letter-spacing:3px}
+  .scans{grid-template-columns:1fr;width:92%;gap:18px}
+  .scan{grid-template-columns:38% 1fr;gap:13px;padding:10px}
+  .scan img{min-height:200px}
+  .scan h2{font-size:24px;margin:12px 0 6px}
+  .scan p{font-size:12px}
+  .finding{margin-top:10px;padding:7px;font-size:11px}
+}
+@media(max-width:380px){
+  .scan{grid-template-columns:1fr}
+  .scan img{height:260px}
+}
+</style>
+</head>
+
+<body>
+<div class="medical-decoration left">✚<br>⌁<br>🧬</div>
+<div class="medical-decoration right">✚<br>♡<br>⌁</div>
+
+<header>
+  <div class="side-note left">
+    Some people wear a white coat...<br>
+    You wear kindness, patience and a smile — that's rarer than any medicine. ♥
+  </div>
+  <div class="side-note right">Happy Birthday, Doctor! ♥</div>
+  <div class="stethoscope">🩺</div>
+
+  <div class="eyebrow">MEDICAL ARCHIVE · BIRTHDAY EDITION</div>
+  <h1>The Heartbeat Archive ♡</h1>
+  <div class="doctor-name">DR. B. MUKESH</div>
+  <p class="subtitle">Four memories. One extraordinary human.</p>
+  <div class="monitor">⌁ &nbsp; MEMORY MONITOR : ACTIVE &nbsp; ⌁</div>
+  <p class="instruction">Click on each scan to explore the memories...</p>
+</header>
+
+<div class="ecg">
+  <svg viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,30 120,30 140,30 155,15 170,48 190,5 210,42 230,30 390,30 410,30 430,18 445,43 465,8 485,38 505,30 650,30 670,30 690,12 710,45 730,20 750,30 1000,30"/>
+  </svg>
+</div>
+
+<main class="scans">
+  <article class="scan">
+    <img src="Dr.M1.jpeg" alt="Dr. B. Mukesh — The Original">
+    <div class="scan-content">
+      <span class="scan-number">SCAN 01</span>
+      <span class="scan-icon">♡</span>
+      <h2>The Original</h2>
+      <p>A memorable chapter that started it all.</p>
+      <div class="finding"><small>DIAGNOSIS :</small>♥ &nbsp; Unforgettable</div>
+    </div>
+  </article>
+
+  <article class="scan">
+    <img src="Dr.B2.jpeg" alt="Dr. B. Mukesh — The Dreamer">
+    <div class="scan-content">
+      <span class="scan-number">SCAN 02</span>
+      <span class="scan-icon">✳</span>
+      <h2>The Dreamer</h2>
+      <p>Big dreams, steady steps, never giving up.</p>
+      <div class="finding"><small>FINDING :</small>✧ &nbsp; Ambition</div>
+    </div>
+  </article>
+
+  <article class="scan">
+    <img src="Dr.B3.jpeg" alt="Dr. B. Mukesh — Beyond the Coat">
+    <div class="scan-content">
+      <span class="scan-number">SCAN 03</span>
+      <span class="scan-icon">⌁</span>
+      <h2>Beyond The Coat</h2>
+      <p>Same heart, different side of the story.</p>
+      <div class="finding"><small>FINDING :</small>☺ &nbsp; Personality</div>
+    </div>
+  </article>
+
+  <article class="scan">
+    <img src="Dr.B4.jpeg" alt="Dr. B. Mukesh — The Next Chapter">
+    <div class="scan-content">
+      <span class="scan-number">SCAN 04</span>
+      <span class="scan-icon">♡</span>
+      <h2>The Next Chapter</h2>
+      <p>More dreams, more success... The best is yet to come.</p>
+      <div class="finding"><small>PROGNOSIS :</small>♥ &nbsp; Bright Future</div>
+    </div>
+  </article>
+</main>
+<div class="ecg">
+  <svg viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,30 150,30 175,12 190,45 210,5 230,43 250,30 410,30 440,30 460,12 480,43 500,8 520,38 540,30 700,30 725,30 745,12 765,45 785,20 805,30 1000,30"/>
+  </svg>
+</div>
+
+<footer>
+  <h2>Happy Birthday, Dr. B. Mukesh! 🎂</h2>
+  <p>May your life be filled with the same hope, care, and happiness that you bring into the world.</p>
+  <p>Wishing you good health, wonderful opportunities, and a beautiful year ahead.</p>
+  <p class="signature">Prepared with care & beautiful memories — By Abinaya (Dosa) ♥</p>
+  <div class="credit">THE HEARTBEAT ARCHIVE · A LITTLE BIRTHDAY PROJECT MADE WITH CARE</div>
+  <a href="../personal.html" class="next-btn">Next →</a>
+</footer>
+<!-- Photo Preview Popup -->
+<div id="photoPopup" class="photo-popup" onclick="closePhoto()">
+  <button class="close-btn" onclick="closePhoto()">✕</button>
+  <img id="popupImage" src="" alt="Memory photo">
+  <h2 id="popupTitle"></h2>
+  <p id="popupText"></p>
+</div>
+
+<style>
+.photo-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 8, 25, 0.96);
+  backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+  color: #dffaff;
+  text-align: center;
+}
+.photo-popup.show { display: flex; }
+.photo-popup img {
+  max-width: 90%;
+  max-height: 65vh;
+  object-fit: contain;
+  border: 2px solid #00e5ff;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #00bfff;
+}
+.photo-popup h2 {
+  margin-top: 18px;
+  color: #00e5ff;
+}
+.photo-popup p { margin-top: 8px; }
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: transparent;
+  color: white;
+  border: 1px solid #00e5ff;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 22px;
+  cursor: pointer;
+}
+.scan img { cursor: pointer; }
+.next-btn {
+  display: block;
+  width: fit-content;
+  margin: 20px 25px 25px auto;
+  padding: 12px 25px;
+  background: linear-gradient(45deg, #00e5ff, #a855f7);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 15px #00e5ff;
+  position: static;
+}
+
+.next-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #a855f7;
+}
+</style>
+
+<script>
+document.querySelectorAll(".scan").forEach((card) => {
+  card.addEventListener("click", () => {
+    const photo = card.querySelector("img");
+    const title = card.querySelector("h2");
+    const text = card.querySelector("p");
+
+    document.getElementById("popupImage").src = photo.src;
+    document.getElementById("popupTitle").textContent = title.textContent;
+    document.getElementById("popupText").textContent = text.textContent;
+    document.getElementById("photoPopup").classList.add("show");
+  });
+});
+
+function closePhoto() {
+  document.getElementById("photoPopup").classList.remove("show");
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closePhoto();
+});
+</script>
+</body>
+</html>

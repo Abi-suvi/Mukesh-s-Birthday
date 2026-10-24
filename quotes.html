@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Little Words For You 💌</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+
+      background:
+        radial-gradient(circle at 20% 20%, #ff3cac55, transparent 30%),
+        radial-gradient(circle at 80% 30%, #784ba055, transparent 30%),
+        radial-gradient(circle at 50% 90%, #2b86c555, transparent 35%),
+        linear-gradient(135deg, #090018, #26002f, #10002b, #001b35);
+
+      background-size: 200% 200%;
+      animation: backgroundMove 10s ease infinite;
+    }
+
+    @keyframes backgroundMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* ✨ BLINKING STARS */
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      color: white;
+      font-size: 12px;
+      animation: twinkle 2s infinite ease-in-out;
+      text-shadow:
+        0 0 6px white,
+        0 0 12px #ff8fd1,
+        0 0 20px #8fdcff;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+    }
+
+    /* 💕 FLOATING MINI HEARTS */
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 15px;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatHeart 7s linear infinite;
+      opacity: 0;
+      filter: drop-shadow(0 0 8px #ff7eb9);
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(-110vh) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* MAIN CONTENT */
+
+    .container {
+      position: relative;
+      z-index: 5;
+      max-width: 720px;
+      margin: auto;
+      padding: 45px 18px;
+    }
+
+    .emoji {
+      font-size: 60px;
+      animation: pulse 2s infinite;
+      filter: drop-shadow(0 0 15px #ff8ac5);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: clamp(35px, 9vw, 58px);
+
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #ffb3d9,
+        #fff,
+        #aeeaff,
+        #ffffff
+      );
+
+      background-size: 300% auto;
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      animation: shineText 4s linear infinite;
+
+      text-shadow: 0 0 25px rgba(255,255,255,0.25);
+    }
+
+    @keyframes shineText {
+      to {
+        background-position: 300% center;
+      }
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      margin-bottom: 35px;
+      color: #f5d9ff;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    /* 💌 QUOTE CARDS */
+
+    .quote-card {
+      position: relative;
+      margin: 25px 0;
+      padding: 30px 22px;
+
+      border-radius: 26px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.15),
+          rgba(255,50,150,0.08),
+          rgba(80,180,255,0.08)
+        );
+
+      border: 1px solid rgba(255,255,255,0.3);
+
+      backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 0 20px rgba(255,80,180,0.15),
+        0 15px 45px rgba(0,0,0,0.35);
+
+      transition: 0.4s;
+    }
+
+    .quote-card::before {
+      content: "✦";
+      position: absolute;
+      top: 10px;
+      left: 18px;
+      color: #fff;
+      font-size: 18px;
+      animation: sparkle 1.5s infinite;
+    }
+
+    .quote-card::after {
+      content: "✧";
+      position: absolute;
+      bottom: 10px;
+      right: 18px;
+      color: #ffb7df;
+      font-size: 20px;
+      animation: sparkle 2s infinite;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-8px) scale(1.02);
+
+      box-shadow:
+        0 0 30px rgba(255,80,180,0.4),
+        0 20px 55px rgba(0,0,0,0.45);
+    }
+
+    .quote-card h2 {
+      color: #ffb1d7;
+      font-size: 20px;
+      margin-bottom: 17px;
+
+      text-shadow:
+        0 0 8px #ff65ae,
+        0 0 18px rgba(255,80,180,0.5);
+    }
+
+    .quote-card p {
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1.85;
+
+      font-weight: 800;
+
+      text-shadow:
+        0 0 5px rgba(255,255,255,0.4);
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.4) rotate(180deg);
+      }
+    }
+
+    /* 🌌 FINAL QUOTE */
+
+    .final {
+      margin-top: 40px;
+      padding: 32px 22px;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,70,160,0.18),
+          rgba(120,70,255,0.15),
+          rgba(50,190,255,0.12)
+        );
+
+      border: 1px solid rgba(255,180,220,0.4);
+
+      box-shadow:
+        0 0 35px rgba(255,70,170,0.25),
+        0 15px 50px rgba(0,0,0,0.4);
+    }
+
+    .final h2 {
+      color: #ffd0e7;
+      margin-bottom: 18px;
+
+      text-shadow:
+        0 0 10px #ff5cac,
+        0 0 20px #ff5cac;
+    }
+
+    .final p {
+      font-size: 19px;
+      line-height: 1.9;
+      font-weight: 800;
+
+      text-shadow:
+        0 0 7px rgba(255,255,255,0.4);
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #dcbce8;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✨ BLINKING STARS -->
+
+  <div class="stars">
+
+    <span class="star" style="left:5%; top:10%; animation-delay:0s;">✦</span>
+    <span class="star" style="left:15%; top:25%; animation-delay:1s;">✧</span>
+    <span class="star" style="left:28%; top:8%; animation-delay:.5s;">⋆</span>
+    <span class="star" style="left:42%; top:20%; animation-delay:1.5s;">✦</span>
+    <span class="star" style="left:58%; top:12%; animation-delay:.8s;">✧</span>
+    <span class="star" style="left:72%; top:28%; animation-delay:1.2s;">⋆</span>
+    <span class="star" style="left:88%; top:15%; animation-delay:.3s;">✦</span>
+
+    <span class="star" style="left:10%; top:55%; animation-delay:1.4s;">✧</span>
+    <span class="star" style="left:25%; top:70%; animation-delay:.7s;">✦</span>
+    <span class="star" style="left:45%; top:60%; animation-delay:1.7s;">⋆</span>
+    <span class="star" style="left:65%; top:75%; animation-delay:.4s;">✧</span>
+    <span class="star" style="left:82%; top:58%; animation-delay:1.1s;">✦</span>
+    <span class="star" style="left:94%; top:80%; animation-delay:.6s;">⋆</span>
+
+  </div>
+
+
+  <!-- 💕 MINI HEARTS -->
+
+  <span class="heart" style="left:8%; animation-delay:0s;">💗</span>
+  <span class="heart" style="left:20%; animation-delay:2s;">💕</span>
+  <span class="heart" style="left:35%; animation-delay:4s;">💖</span>
+  <span class="heart" style="left:52%; animation-delay:1s;">💗</span>
+  <span class="heart" style="left:68%; animation-delay:3s;">💞</span>
+  <span class="heart" style="left:82%; animation-delay:5s;">💓</span>
+  <span class="heart" style="left:93%; animation-delay:2.5s;">💖</span>
+
+
+  <div class="container">
+
+    <div class="emoji">💌✨</div>
+
+    <h1>Little Words For You 🌸</h1>
+
+    <p class="subtitle">
+      Some Words Are Meant To Be Felt, Not Just Read... 🥹❤️✨
+    </p>
+
+
+    <div class="quote-card">
+
+      <h2>🌙 “A Little Truth…” ✨</h2>
+
+      <p>
+        Some People Enter Our Lives Quietly… 🫶🏻🌸
+        But Somehow, Their Presence Becomes One Of The Most Beautiful
+        Parts Of Our Memories. 🥹❤️‍🩹✨
+      </p>
+
+    </div>
+
+
+    <div class="quote-card">
+
+      <h2>🩺 “Beyond The White Coat…” 🤍✨</h2>
+
+      <p>
+        You May Be A Doctor To The World 🩺🌟,
+        A Doctor By Profession, But A Truly Kind And Genuine Person By Character. 🫶🏻🌸
+        Your Profession Makes You Respected,💖 But Your Nature Makes You Special. 🥹❤️✨
+        
+      </p>
+
+    </div>
+
+
+    <div class="quote-card">
+
+      <h2>🌸 🌙 “What Truly Stands Out…” 🫶🏻🥹💭</h2>
+
+      <p>
+        Not Just Your Profession… 🩺
+>>      But The Kindness, Patience And Genuine Nature Behind It. 🥹❤️✨
+      </p>
+
+    </div>
+
+
+    <div class="quote-card">
+
+      <h2>⏳ “If Time Could Speak…” 🌙🕊️</h2>
+
+      <p>
+        It Would Tell You That Some Moments Pass…
+        But The Feelings And Memories They Leave Behind Can Stay Forever.
+        🥹❤️‍🩹⏳✨
+      </p>
+
+    </div>
+
+
+    <div class="quote-card">
+
+      <h2>🎁 “A Little Gift From My Heart…” 💌🌹</h2>
+
+      <p>
+        If I Could Gift You One Thing Today, It Would Be The Ability
+        To See Yourself Through The Eyes Of Those Who Truly Appreciate You.
+        🫶🏻❤️✨🎀
+      </p>
+
+    </div>
+
+
+    <div class="quote-card">
+
+      <h2>🌌 “And Maybe, Someday…” 🥹❤️</h2>
+
+      <p>
+        You May Forget The Little Details Of This Day…
+        But I Hope You Never Forget That You Were Once Someone’s
+        Very Special Memory. 🥹🫶🏻🌙❤️‍🩹✨
+      </p>
+
+    </div>
+
+
+    <div class="final">
+
+      <h2>🎂 “For You, Doctor…” 🩺❤️</h2>
+
+      <p>
+        Keep Shining In Your Own Beautiful Way… ✨🩺
+        Keep Touching Lives With Your Kindness… 🤍🌸
+        And Always Remember —
+        Some People Are Truly Grateful That They Got To Know You.
+        🥹🫶🏻❤️🎂🌹✨
+
+        💌 “More Than Just A Birthday Wish…” ✨
+
+> You May Only See A Little Birthday Surprise On Your Screen… 💻🎂✨
+But Behind Every Word, Every Quote, Every Little Detail And Every Surprise, 
+There’s A Lot Of Time, Thought And Genuine Care. 🥹❤️🫶🏻
+I Put These Little Pieces Together Just To Make Your Birthday
+A Little More Special And Give You Something You’ll Remember. 🌸💫
+It May Not Be Perfect, But Every Little Part Of It Was Made Especially For You. 🩺🎀❤️
+And If This Brings Even One Small Smile To Your Face, Then Every Bit Of The Effort Was Worth It. 😊🥹✨
+
+      </p>
+
+    </div>
+
+
+    <div class="footer">
+      Made With Beautiful Memories ❤️✨
+    </div><br>
+  <span>— By S.Abinaya ( Dosa) 💌🌸✨</span>
+
+  </div>
+  <!-- NEXT PAGE BUTTON -->
+<div class="quotes-next-wrap">
+    <button
+        type="button"
+        class="quotes-next-btn"
+        onclick="window.location.href='Photos/heartbeat_archive.html'">
+        Next 💗 ✨ →
+    </button>
+</div>
+
+<style>
+.quotes-next-wrap {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding: 15px 20px 35px;
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+.quotes-next-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 130px;
+    min-height: 48px;
+    padding: 12px 24px;
+    border: 1px solid white;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff3cac, #784bff, #00c9ff);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 18px #d34dff;
+}
+
+.quotes-next-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px #ff62d2;
+}
+
+@media (max-width: 600px) {
+    .quotes-next-wrap {
+        padding: 15px 16px 25px;
+    }
+}
+</style>
+</body>
+</html>
+
